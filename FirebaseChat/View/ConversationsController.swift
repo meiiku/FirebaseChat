@@ -8,23 +8,22 @@
 import UIKit
 
 class ConversationsController: UIViewController {
-    
+
     // MARK: - Properties
+    private let reuseIdentifier = "ConversationCell"
     
     // MARK: - UI Elements
+    private let conversationsTableView = UITableView()
     
     // MARK: - Init
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        configureNavigationBar()
+        configureUI()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        configureUI()
-        setConstraints()
     }
     // MARK: - Selectors
     
@@ -32,11 +31,11 @@ class ConversationsController: UIViewController {
         print("Profile opens")
     }
     
-    
     // MARK: - Setup UI
     
     func configureUI() {
-        self.view.backgroundColor = .white
+        configureNavigationBar()
+        configureTableView()
     }
     
     func configureNavigationBar() {
@@ -59,11 +58,40 @@ class ConversationsController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: leftBarButton, style: .plain, target: self, action: #selector(showProfile))
     }
     
-    
-    
-    private func setConstraints() {
+    func configureTableView() {
+//        conversationsTableView.backgroundColor = .systemCyan
+        conversationsTableView.rowHeight = 80
+        conversationsTableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        conversationsTableView.tableFooterView = UIView()
         
+        conversationsTableView.delegate = self
+        conversationsTableView.dataSource = self
+        
+        self.view.addSubview(conversationsTableView)
+        conversationsTableView.frame = self.view.frame
     }
 }
 
+// MARK: - Table settings
+extension ConversationsController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as? UITableViewCell else {
+            return UITableViewCell()
+        }
+        cell.textLabel?.text = "Test"
+        return cell
+    }
+}
+
+
+extension ConversationsController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print(indexPath.row)
+    }
+}
 
