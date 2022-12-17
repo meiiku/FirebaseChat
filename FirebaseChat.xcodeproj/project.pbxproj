@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F52BDB2294D75C000F77D56 /* UIView + Constaints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52BDB1294D75C000F77D56 /* UIView + Constaints.swift */; };
 		9FBF975B294A617300628AEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF975A294A617300628AEF /* AppDelegate.swift */; };
 		9FBF975D294A617300628AEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF975C294A617300628AEF /* SceneDelegate.swift */; };
 		9FBF975F294A617300628AEF /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF975E294A617300628AEF /* ConversationsController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F52BDB1294D75C000F77D56 /* UIView + Constaints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Constaints.swift"; sourceTree = "<group>"; };
 		9FBF9757294A617300628AEF /* FirebaseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBF975A294A617300628AEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FBF975C294A617300628AEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +37,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F52BDB3294D75D900F77D56 /* Authentificaion */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentificaion;
+			sourceTree = "<group>";
+		};
 		9F5AE516294A64190089FF8F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -46,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				9FBF975E294A617300628AEF /* ConversationsController.swift */,
+				9F52BDB3294D75D900F77D56 /* Authentificaion */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -55,6 +65,14 @@
 			children = (
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9F9BF254294D7574003E64A2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9F52BDB1294D75C000F77D56 /* UIView + Constaints.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		9FBF974E294A617300628AEF = {
@@ -80,6 +98,7 @@
 				9F5AE518294A641C0089FF8F /* Model */,
 				9F5AE517294A641B0089FF8F /* View */,
 				9F5AE516294A64190089FF8F /* ViewModel */,
+				9F9BF254294D7574003E64A2 /* Extensions */,
 				9FBF976E294A617D00628AEF /* Resources */,
 			);
 			path = FirebaseChat;
@@ -176,6 +195,7 @@
 			files = (
 				9FBF975F294A617300628AEF /* ConversationsController.swift in Sources */,
 				9FBF975B294A617300628AEF /* AppDelegate.swift in Sources */,
+				9F52BDB2294D75C000F77D56 /* UIView + Constaints.swift in Sources */,
 				9FBF975D294A617300628AEF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
