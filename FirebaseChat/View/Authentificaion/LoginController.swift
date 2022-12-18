@@ -19,15 +19,35 @@ class LoginController: UIViewController {
     }()
     
     private let emailContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemRed
-        return view
+        let containerView = UIView()
+        containerView.backgroundColor = .clear
+        
+        let emailIcon = UIImageView()
+        emailIcon.image = UIImage(systemName: "envelope")
+        emailIcon.tintColor = .white
+
+        containerView.addSubview(emailIcon)
+        emailIcon.centerY(inView: containerView)
+        emailIcon.anchor(left: containerView.leftAnchor, paddingLeft: 8)
+        emailIcon.setDimensions(height: 22, width: 24)
+        
+        return containerView
     }()
     
     private let passwordContainerView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .cyan
-        return view
+        let containerView = UIView()
+        containerView.backgroundColor = .clear
+        
+        let passwordIcon = UIImageView()
+        passwordIcon.image = UIImage(systemName: "lock")
+        passwordIcon.tintColor = .white
+
+        containerView.addSubview(passwordIcon)
+        passwordIcon.centerY(inView: containerView)
+        passwordIcon.anchor(left: containerView.leftAnchor, paddingLeft: 8)
+        passwordIcon.setDimensions(height: 24, width: 24)
+        
+        return containerView
     }()
     
     private let logInButton: UIButton = {
@@ -37,6 +57,19 @@ class LoginController: UIViewController {
         button.layer.cornerRadius = 5
         button.backgroundColor = .green
         return button
+    }()
+    
+    private let emailTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Email"
+        return tf
+    }()
+    
+    private let passwordTextField: UITextField = {
+        let tf = UITextField()
+        tf.placeholder = "Password"
+        tf.isSecureTextEntry = true
+        return tf
     }()
     
     // MARK: - UI Elements
@@ -70,12 +103,16 @@ class LoginController: UIViewController {
         chatIconImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
         chatIconImage.setDimensions(height: 100, width: 100)
         
-        // text-fields
+        // text-fields and login-button
         let stack = UIStackView(arrangedSubviews: [emailContainerView,
                                                    passwordContainerView,
                                                    logInButton])
         stack.axis = .vertical
         stack.spacing = 16
+        
+        emailContainerView.setHeight(height: 50)
+        passwordContainerView.setHeight(height: 50)
+        logInButton.setHeight(height: 50)
         
         self.view.addSubview(stack)
         stack.anchor(top: chatIconImage.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
