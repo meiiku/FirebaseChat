@@ -18,7 +18,7 @@ class LoginController: UIViewController {
         return imageView
     }()
     
-    private let emailContainerView: UIView = {
+    private lazy var emailContainerView: UIView = {
         let containerView = UIView()
         containerView.backgroundColor = .clear
         
@@ -31,10 +31,17 @@ class LoginController: UIViewController {
         emailIcon.anchor(left: containerView.leftAnchor, paddingLeft: 8)
         emailIcon.setDimensions(height: 22, width: 24)
         
+        containerView.addSubview(emailTextField)
+        emailTextField.centerY(inView: containerView)
+        emailTextField.anchor(top: containerView.topAnchor, left: emailIcon.rightAnchor,
+                              bottom: containerView.bottomAnchor, right: containerView.rightAnchor,
+                              paddingTop: 8, paddingLeft: 8, paddingBottom: 8, paddingRight: 8)
+//        emailTextField.backgroundColor = .green
+        
         return containerView
     }()
     
-    private let passwordContainerView: UIView = {
+    private lazy var passwordContainerView: UIView = {
         let containerView = UIView()
         containerView.backgroundColor = .clear
         
@@ -46,6 +53,14 @@ class LoginController: UIViewController {
         passwordIcon.centerY(inView: containerView)
         passwordIcon.anchor(left: containerView.leftAnchor, paddingLeft: 8)
         passwordIcon.setDimensions(height: 24, width: 24)
+        
+        containerView.addSubview(passwordTextField)
+        passwordTextField.centerY(inView: containerView)
+        passwordTextField.anchor(top: containerView.topAnchor, left: passwordIcon.rightAnchor,
+                              bottom: containerView.bottomAnchor, right: containerView.rightAnchor,
+                              paddingTop: 8, paddingLeft: 8, paddingBottom: 8, paddingRight: 8)
+//        passwordTextField.backgroundColor = .green
+        
         
         return containerView
     }()
@@ -62,12 +77,14 @@ class LoginController: UIViewController {
     private let emailTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Email"
+        tf.textColor = .white
         return tf
     }()
     
     private let passwordTextField: UITextField = {
         let tf = UITextField()
         tf.placeholder = "Password"
+        tf.textColor = .white
         tf.isSecureTextEntry = true
         return tf
     }()
@@ -117,6 +134,7 @@ class LoginController: UIViewController {
         self.view.addSubview(stack)
         stack.anchor(top: chatIconImage.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
                      paddingTop: 32, paddingLeft: 32, paddingRight: 32)
+//        stack.backgroundColor = .cyan
     }
     
     func configureGradientBackground() {
