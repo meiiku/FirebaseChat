@@ -11,6 +11,8 @@ class LoginController: UIViewController {
     
     // MARK: - Properties
     
+    // MARK: - UI Elements
+    
     private let chatIconImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "bubble.right")
@@ -24,7 +26,7 @@ class LoginController: UIViewController {
     private let emailTextField = CustomTextField(placeholder: "Email")
     private let passwordTextField: CustomTextField = {
         let textField = CustomTextField(placeholder: "Password")
-        textField.isSecureTextEntry = true
+//        textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -48,16 +50,13 @@ class LoginController: UIViewController {
         button.setAttributedTitle(attributeString, for: .normal)
         button.setTitleColor(.white, for: .normal)
         
-        button.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
         return button
     }()
     
-    // MARK: - UI Elements
-    
     // MARK: - Init
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLayoutSubviews() {
         configureUI()
     }
     
@@ -67,7 +66,7 @@ class LoginController: UIViewController {
     
     // MARK: - Selectors
     
-    @objc func signUpButtonPressed() {
+    @objc func showSignUp() {
         let signUpController = RegistrationController()
         navigationController?.pushViewController(signUpController, animated: true)
     }
