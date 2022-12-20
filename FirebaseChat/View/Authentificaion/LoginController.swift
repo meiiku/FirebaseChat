@@ -31,20 +31,26 @@ class LoginController: UIViewController {
     private let logInButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Log In", for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+        button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 5
-        button.backgroundColor = .green
+        button.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
         return button
     }()
     
-//
-//    private let passwordTextField: UITextField = {
-//        let tf = UITextField()
-//        tf.placeholder = "Password"
-//        tf.textColor = .white
-//        tf.isSecureTextEntry = true
-//        return tf
-//    }()
+    private let dontHaveAccountButton: UIButton = {
+        // part of title needs to be bold-font. So doing this through attributes
+        let button = UIButton()
+        let attributeString = NSMutableAttributedString(string: "Don't have an account? ",
+                                                        attributes: [.font : UIFont.systemFont(ofSize: 16)])
+        attributeString.append(NSAttributedString(string: "Sign Up",
+                                                  attributes: [.font : UIFont.boldSystemFont(ofSize: 16)]))
+        button.setAttributedTitle(attributeString, for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        
+        button.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
+        return button
+    }()
     
     // MARK: - UI Elements
     
@@ -60,6 +66,11 @@ class LoginController: UIViewController {
     }
     
     // MARK: - Selectors
+    
+    @objc func signUpButtonPressed() {
+        let signUpController = RegistrationController()
+        navigationController?.pushViewController(signUpController, animated: true)
+    }
     
     // MARK: - Methods
     
@@ -89,7 +100,12 @@ class LoginController: UIViewController {
         self.view.addSubview(stack)
         stack.anchor(top: chatIconImage.bottomAnchor, left: view.leftAnchor, right: view.rightAnchor,
                      paddingTop: 32, paddingLeft: 32, paddingRight: 32)
-//        stack.backgroundColor = .cyan
+
+        // signUp button
+        self.view.addSubview(dontHaveAccountButton)
+        dontHaveAccountButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
+                                     right: view.rightAnchor, paddingLeft: 32, paddingBottom: 16,
+                                     paddingRight: 32)
     }
     
     func configureGradientBackground() {
