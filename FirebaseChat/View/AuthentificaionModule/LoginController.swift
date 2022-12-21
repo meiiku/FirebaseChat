@@ -11,6 +11,8 @@ class LoginController: UIViewController {
     
     // MARK: - Properties
     
+    private var viewModel = LoginViewModel()
+    
     // MARK: - UI Elements
     
     private let chatIconImage: UIImageView = {
@@ -26,7 +28,7 @@ class LoginController: UIViewController {
     private let emailTextField = CustomTextField(placeholder: "Email")
     private let passwordTextField: CustomTextField = {
         let textField = CustomTextField(placeholder: "Password")
-//        textField.isSecureTextEntry = true
+        textField.isSecureTextEntry = true
         return textField
     }()
     
@@ -37,6 +39,7 @@ class LoginController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 5
         button.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        button.isEnabled = false
         return button
     }()
     
@@ -49,8 +52,6 @@ class LoginController: UIViewController {
                                                   attributes: [.font : UIFont.boldSystemFont(ofSize: 16)]))
         button.setAttributedTitle(attributeString, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        
-        button.addTarget(self, action: #selector(showSignUp), for: .touchUpInside)
         return button
     }()
     
@@ -62,18 +63,49 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        logInButton.addTarget(self, action: #selector(handleLogIn), for: .touchUpInside)
+        dontHaveAccountButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
     // MARK: - Selectors
     
-    @objc func showSignUp() {
+    @objc func handleLogIn() {
+        print("DEBUG: LogIn button pressed")
+    }
+    
+    @objc func handleSignUp() {
         let signUpController = RegistrationController()
         navigationController?.pushViewController(signUpController, animated: true)
     }
     
     // MARK: - Methods
     
-    // MARK: - Setup UIим
+    func checkTextFieldsStatus() {
+        if viewModel.formIsValid {
+            logInButton.isEnabled = true
+            logInButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        } else {
+            logInButton.isEnabled = false
+            logInButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        }
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        print("DEBUG: sender text is \(sender.text)")
+        
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        
+        checkTextFieldsStatus()
+    }
+    
+    // MARK: - Setup UI
     
     private func configureUI() {
         navigationController?.navigationBar.isHidden = true

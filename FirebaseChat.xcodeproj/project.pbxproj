@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F240B32295399F800AC3E32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F240B31295399F800AC3E32 /* LoginViewModel.swift */; };
 		9F52BDB2294D75C000F77D56 /* UIView + Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52BDB1294D75C000F77D56 /* UIView + Constraints.swift */; };
 		9F52BDB5294D764900F77D56 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52BDB4294D764900F77D56 /* LoginController.swift */; };
 		9F52BDB8294D766900F77D56 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52BDB7294D766900F77D56 /* RegistrationController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9F240B31295399F800AC3E32 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = "../../../Архитектура/MVVM_swiftbook_tableView/LoginViewModel.swift"; sourceTree = "<group>"; };
 		9F52BDB1294D75C000F77D56 /* UIView + Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Constraints.swift"; sourceTree = "<group>"; };
 		9F52BDB4294D764900F77D56 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9F52BDB7294D766900F77D56 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
@@ -45,28 +47,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F52BDB3294D75D900F77D56 /* Authentificaion */ = {
+		9F240B30295399E700AC3E32 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9F240B31295399F800AC3E32 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9F52BDB3294D75D900F77D56 /* AuthentificaionModule */ = {
 			isa = PBXGroup;
 			children = (
 				9F52BDB4294D764900F77D56 /* LoginController.swift */,
 				9F52BDB7294D766900F77D56 /* RegistrationController.swift */,
 			);
-			path = Authentificaion;
-			sourceTree = "<group>";
-		};
-		9F5AE516294A64190089FF8F /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
+			path = AuthentificaionModule;
 			sourceTree = "<group>";
 		};
 		9F5AE517294A641B0089FF8F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9F7CA78A29510B7300F6D88A /* Elements */,
 				9FBF975E294A617300628AEF /* ConversationsController.swift */,
-				9F52BDB3294D75D900F77D56 /* Authentificaion */,
+				9F52BDB3294D75D900F77D56 /* AuthentificaionModule */,
+				9F7CA78A29510B7300F6D88A /* Elements */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -117,7 +120,7 @@
 				9FBF976F294A618F00628AEF /* App */,
 				9F5AE518294A641C0089FF8F /* Model */,
 				9F5AE517294A641B0089FF8F /* View */,
-				9F5AE516294A64190089FF8F /* ViewModel */,
+				9F240B30295399E700AC3E32 /* ViewModel */,
 				9F9BF254294D7574003E64A2 /* Extensions */,
 				9FBF976E294A617D00628AEF /* Resources */,
 			);
@@ -221,6 +224,7 @@
 				9FBF975D294A617300628AEF /* SceneDelegate.swift in Sources */,
 				9F52BDB8294D766900F77D56 /* RegistrationController.swift in Sources */,
 				9F52BDB5294D764900F77D56 /* LoginController.swift in Sources */,
+				9F240B32295399F800AC3E32 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
