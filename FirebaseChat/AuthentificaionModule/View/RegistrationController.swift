@@ -11,6 +11,8 @@ class RegistrationController: UIViewController {
     
     // MARK: - Properties
     
+    private var viewModel = RegistrationViewModel()
+    
     // MARK: - UI Elements
     
     private let addPhotoButton: UIButton = {
@@ -41,6 +43,7 @@ class RegistrationController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 5
         button.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        button.isEnabled = false
         return button
     }()
     
@@ -53,7 +56,6 @@ class RegistrationController: UIViewController {
                                                   attributes: [.font : UIFont.boldSystemFont(ofSize: 16)]))
         button.setAttributedTitle(attributeString, for: .normal)
         button.setTitleColor(.white, for: .normal)
-        
         
         return button
     }()
@@ -69,6 +71,10 @@ class RegistrationController: UIViewController {
         
         addPhotoButton.addTarget(self, action: #selector(selectPhoto), for: .touchUpInside)
         alreadyHaveAccountButton.addTarget(self, action: #selector(handleShowSignIn), for: .touchUpInside)
+        emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
     // MARK: - Selectors
@@ -88,6 +94,33 @@ class RegistrationController: UIViewController {
     }
     
     // MARK: - Methods
+    
+    func checkTextFieldsStatus() {
+        // if both textfields are filled, logIn button becomes enabledЦ
+        if viewModel.formIsValid {
+            signUpButton.isEnabled = true
+            signUpButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        } else {
+            signUpButton.isEnabled = false
+            signUpButton.backgroundColor = #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)
+        }
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        print("DEBUG: sender text is \(sender.text)")
+        
+        if sender == emailTextField {
+            viewModel.email = sender.text
+        } else if sender == fullnameTextField {
+            viewModel.fullname = sender.text
+        } else if sender == usernameTextField {
+            viewModel.username = sender.text
+        } else {
+            viewModel.password = sender.text
+        }
+        
+        checkTextFieldsStatus()
+    }
     
     // MARK: - Setup UI
     

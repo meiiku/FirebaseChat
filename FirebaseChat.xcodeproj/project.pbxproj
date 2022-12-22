@@ -13,6 +13,9 @@
 		9F547A2B29548AC700C32A40 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F547A2A29548AC700C32A40 /* LoginViewModel.swift */; };
 		9F7CA787295100FD00F6D88A /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7CA786295100FD00F6D88A /* InputContainerView.swift */; };
 		9F7CA7892951084600F6D88A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7CA7882951084600F6D88A /* CustomTextField.swift */; };
+		9FB1CAD42954B433007B24B6 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1CAD32954B433007B24B6 /* RegistrationViewModel.swift */; };
+		9FB1CAD62954B4AC007B24B6 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1CAD52954B4AC007B24B6 /* Protocols.swift */; };
+		9FB1CAD92954B709007B24B6 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FB1CAD82954B709007B24B6 /* LoginModel.swift */; };
 		9FBF975B294A617300628AEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF975A294A617300628AEF /* AppDelegate.swift */; };
 		9FBF975D294A617300628AEF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF975C294A617300628AEF /* SceneDelegate.swift */; };
 		9FBF975F294A617300628AEF /* ConversationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF975E294A617300628AEF /* ConversationsController.swift */; };
@@ -27,6 +30,9 @@
 		9F547A2A29548AC700C32A40 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9F7CA786295100FD00F6D88A /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		9F7CA7882951084600F6D88A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		9FB1CAD32954B433007B24B6 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		9FB1CAD52954B4AC007B24B6 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
+		9FB1CAD82954B709007B24B6 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
 		9FBF9757294A617300628AEF /* FirebaseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9FBF975A294A617300628AEF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9FBF975C294A617300628AEF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -50,6 +56,7 @@
 		9F52BDB3294D75D900F77D56 /* AuthentificaionModule */ = {
 			isa = PBXGroup;
 			children = (
+				9FB1CAD72954B6FF007B24B6 /* Model */,
 				9FB1CAD22954B367007B24B6 /* View */,
 				9F547A2929548AB600C32A40 /* ViewModel */,
 				9F7CA78A29510B7300F6D88A /* Elements */,
@@ -61,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				9F547A2A29548AC700C32A40 /* LoginViewModel.swift */,
+				9FB1CAD32954B433007B24B6 /* RegistrationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -91,6 +99,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9FB1CAD72954B6FF007B24B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9FB1CAD82954B709007B24B6 /* LoginModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9FBF974E294A617300628AEF = {
 			isa = PBXGroup;
 			children = (
@@ -111,10 +127,11 @@
 			isa = PBXGroup;
 			children = (
 				9FBF976F294A618F00628AEF /* App */,
+				9FBF975E294A617300628AEF /* ConversationsController.swift */,
+				9FB1CAD52954B4AC007B24B6 /* Protocols.swift */,
 				9F52BDB3294D75D900F77D56 /* AuthentificaionModule */,
 				9F9BF254294D7574003E64A2 /* Extensions */,
 				9FBF976E294A617D00628AEF /* Resources */,
-				9FBF975E294A617300628AEF /* ConversationsController.swift */,
 			);
 			path = FirebaseChat;
 			sourceTree = "<group>";
@@ -209,10 +226,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9FBF975F294A617300628AEF /* ConversationsController.swift in Sources */,
+				9FB1CAD92954B709007B24B6 /* LoginModel.swift in Sources */,
 				9FBF975B294A617300628AEF /* AppDelegate.swift in Sources */,
 				9F7CA787295100FD00F6D88A /* InputContainerView.swift in Sources */,
+				9FB1CAD62954B4AC007B24B6 /* Protocols.swift in Sources */,
 				9F52BDB2294D75C000F77D56 /* UIView + Constraints.swift in Sources */,
 				9F7CA7892951084600F6D88A /* CustomTextField.swift in Sources */,
+				9FB1CAD42954B433007B24B6 /* RegistrationViewModel.swift in Sources */,
 				9FBF975D294A617300628AEF /* SceneDelegate.swift in Sources */,
 				9F52BDB8294D766900F77D56 /* RegistrationController.swift in Sources */,
 				9F52BDB5294D764900F77D56 /* LoginController.swift in Sources */,
