@@ -50,8 +50,9 @@
 		9F52BDB3294D75D900F77D56 /* AuthentificaionModule */ = {
 			isa = PBXGroup;
 			children = (
-				9F52BDB4294D764900F77D56 /* LoginController.swift */,
-				9F52BDB7294D766900F77D56 /* RegistrationController.swift */,
+				9FB1CAD22954B367007B24B6 /* View */,
+				9F547A2929548AB600C32A40 /* ViewModel */,
+				9F7CA78A29510B7300F6D88A /* Elements */,
 			);
 			path = AuthentificaionModule;
 			sourceTree = "<group>";
@@ -62,16 +63,6 @@
 				9F547A2A29548AC700C32A40 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		9F5AE517294A641B0089FF8F /* View */ = {
-			isa = PBXGroup;
-			children = (
-				9FBF975E294A617300628AEF /* ConversationsController.swift */,
-				9F52BDB3294D75D900F77D56 /* AuthentificaionModule */,
-				9F7CA78A29510B7300F6D88A /* Elements */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		9F7CA78A29510B7300F6D88A /* Elements */ = {
@@ -89,6 +80,15 @@
 				9F52BDB1294D75C000F77D56 /* UIView + Constraints.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9FB1CAD22954B367007B24B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9F52BDB4294D764900F77D56 /* LoginController.swift */,
+				9F52BDB7294D766900F77D56 /* RegistrationController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		9FBF974E294A617300628AEF = {
@@ -111,10 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				9FBF976F294A618F00628AEF /* App */,
-				9F5AE517294A641B0089FF8F /* View */,
-				9F547A2929548AB600C32A40 /* ViewModel */,
+				9F52BDB3294D75D900F77D56 /* AuthentificaionModule */,
 				9F9BF254294D7574003E64A2 /* Extensions */,
 				9FBF976E294A617D00628AEF /* Resources */,
+				9FBF975E294A617300628AEF /* ConversationsController.swift */,
 			);
 			path = FirebaseChat;
 			sourceTree = "<group>";

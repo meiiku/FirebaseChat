@@ -17,7 +17,6 @@ class RegistrationController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "addPhoto"), for: .normal)
         button.tintColor = .white
-        button.addTarget(self, action: #selector(selectPhoto), for: .touchUpInside)
         return button
     }()
     
@@ -55,7 +54,7 @@ class RegistrationController: UIViewController {
         button.setAttributedTitle(attributeString, for: .normal)
         button.setTitleColor(.white, for: .normal)
         
-        button.addTarget(self, action: #selector(showSignIn), for: .touchUpInside)
+        
         return button
     }()
     
@@ -67,15 +66,23 @@ class RegistrationController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        addPhotoButton.addTarget(self, action: #selector(selectPhoto), for: .touchUpInside)
+        alreadyHaveAccountButton.addTarget(self, action: #selector(handleShowSignIn), for: .touchUpInside)
     }
     
     // MARK: - Selectors
     
     @objc func selectPhoto() {
         print("addPhotoButtonPressed")
+        
+        // selected image becomes an avatar - the method described in UIImagePickerControllerDelegate.extension
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
     
-    @objc func showSignIn() {
+    @objc func handleShowSignIn() {
         print("showSignIn")
         navigationController?.popViewController(animated: true)
     }
@@ -120,5 +127,22 @@ class RegistrationController: UIViewController {
         gradiend.locations = [0, 1]
         gradiend.frame = self.view.frame
         self.view.layer.addSublayer(gradiend)
+    }
+}
+// MARK: - UIImagePickerControllerDelegate
+
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let selectedImage = info[.originalImage] as? UIImage
+        
+        //selected image is set to avatar
+        addPhotoButton.setImage(selectedImage?.withRenderingMode(.alwaysOriginal), for: .normal)
+        addPhotoButton.clipsToBounds = true
+        addPhotoButton.layer.borderColor = UIColor.white.cgColor
+        addPhotoButton.layer.borderWidth = 5
+        addPhotoButton.layer.cornerRadius = 200/2
+        
+        dismiss(animated: true)
+        print("image selected")
     }
 }

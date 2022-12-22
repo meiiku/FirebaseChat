@@ -65,7 +65,7 @@ class LoginController: UIViewController {
         super.viewDidLoad()
         
         logInButton.addTarget(self, action: #selector(handleLogIn), for: .touchUpInside)
-        dontHaveAccountButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        dontHaveAccountButton.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
@@ -76,7 +76,7 @@ class LoginController: UIViewController {
         print("DEBUG: LogIn button pressed")
     }
     
-    @objc func handleSignUp() {
+    @objc func handleShowSignUp() {
         let signUpController = RegistrationController()
         navigationController?.pushViewController(signUpController, animated: true)
     }
@@ -84,6 +84,7 @@ class LoginController: UIViewController {
     // MARK: - Methods
     
     func checkTextFieldsStatus() {
+        // if both textfields are filled, logIn button becomes enabledЦ
         if viewModel.formIsValid {
             logInButton.isEnabled = true
             logInButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
