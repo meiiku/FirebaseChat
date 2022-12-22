@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F240B32295399F800AC3E32 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F240B31295399F800AC3E32 /* LoginViewModel.swift */; };
 		9F52BDB2294D75C000F77D56 /* UIView + Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52BDB1294D75C000F77D56 /* UIView + Constraints.swift */; };
 		9F52BDB5294D764900F77D56 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52BDB4294D764900F77D56 /* LoginController.swift */; };
 		9F52BDB8294D766900F77D56 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F52BDB7294D766900F77D56 /* RegistrationController.swift */; };
+		9F547A2B29548AC700C32A40 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F547A2A29548AC700C32A40 /* LoginViewModel.swift */; };
 		9F7CA787295100FD00F6D88A /* InputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7CA786295100FD00F6D88A /* InputContainerView.swift */; };
 		9F7CA7892951084600F6D88A /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F7CA7882951084600F6D88A /* CustomTextField.swift */; };
 		9FBF975B294A617300628AEF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FBF975A294A617300628AEF /* AppDelegate.swift */; };
@@ -21,10 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9F240B31295399F800AC3E32 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewModel.swift; path = "../../../Архитектура/MVVM_swiftbook_tableView/LoginViewModel.swift"; sourceTree = "<group>"; };
 		9F52BDB1294D75C000F77D56 /* UIView + Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Constraints.swift"; sourceTree = "<group>"; };
 		9F52BDB4294D764900F77D56 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9F52BDB7294D766900F77D56 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		9F547A2A29548AC700C32A40 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		9F7CA786295100FD00F6D88A /* InputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputContainerView.swift; sourceTree = "<group>"; };
 		9F7CA7882951084600F6D88A /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		9FBF9757294A617300628AEF /* FirebaseChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,14 +47,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F240B30295399E700AC3E32 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9F240B31295399F800AC3E32 /* LoginViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		9F52BDB3294D75D900F77D56 /* AuthentificaionModule */ = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +54,14 @@
 				9F52BDB7294D766900F77D56 /* RegistrationController.swift */,
 			);
 			path = AuthentificaionModule;
+			sourceTree = "<group>";
+		};
+		9F547A2929548AB600C32A40 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9F547A2A29548AC700C32A40 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9F5AE517294A641B0089FF8F /* View */ = {
@@ -72,13 +72,6 @@
 				9F7CA78A29510B7300F6D88A /* Elements */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		9F5AE518294A641C0089FF8F /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9F7CA78A29510B7300F6D88A /* Elements */ = {
@@ -118,9 +111,8 @@
 			isa = PBXGroup;
 			children = (
 				9FBF976F294A618F00628AEF /* App */,
-				9F5AE518294A641C0089FF8F /* Model */,
 				9F5AE517294A641B0089FF8F /* View */,
-				9F240B30295399E700AC3E32 /* ViewModel */,
+				9F547A2929548AB600C32A40 /* ViewModel */,
 				9F9BF254294D7574003E64A2 /* Extensions */,
 				9FBF976E294A617D00628AEF /* Resources */,
 			);
@@ -224,7 +216,7 @@
 				9FBF975D294A617300628AEF /* SceneDelegate.swift in Sources */,
 				9F52BDB8294D766900F77D56 /* RegistrationController.swift in Sources */,
 				9F52BDB5294D764900F77D56 /* LoginController.swift in Sources */,
-				9F240B32295399F800AC3E32 /* LoginViewModel.swift in Sources */,
+				9F547A2B29548AC700C32A40 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
