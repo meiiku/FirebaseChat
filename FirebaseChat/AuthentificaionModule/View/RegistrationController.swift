@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import Firebase
 
 class RegistrationController: UIViewController {
     
     // MARK: - Properties
     
     private var viewModel = RegistrationViewModel()
+    private var profileImage: UIImage?
     
     // MARK: - UI Elements
     
@@ -75,6 +77,7 @@ class RegistrationController: UIViewController {
         usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         fullnameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
+        signUpButton.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
     }
     
     // MARK: - Selectors
@@ -106,6 +109,7 @@ class RegistrationController: UIViewController {
         }
     }
     
+    // observer for textfields
     @objc func textDidChange(sender: UITextField) {
         print("DEBUG: sender text is \(sender.text)")
         
@@ -121,6 +125,53 @@ class RegistrationController: UIViewController {
         
         checkTextFieldsStatus()
     }
+    
+    @objc func handleSignUp() {
+        // checking if every user's parameter exists
+        guard let email = emailTextField.text, let password = passwordTextField.text,
+              let username = usernameTextField.text?.lowercased(), let fullname = fullnameTextField.text else { return }
+        guard let profileImage = profileImage else { return }
+        
+        // creates a compressed image
+        guard let imageData = profileImage.jpegData(compressionQuality: 0.5) else { return }
+        
+        // creates smth like cache-sum
+        let filename = NSUUID().uuidString
+        
+        // creates a folder "profile_images" and put there filenames from previous step
+        let ref = Storage.storage().reference(withPath: "/profile_images/\(filename)")
+        
+        
+        ref.putData(imageData, metadata: nil) { (meta, error) in
+            if let error = error {
+                print("DEBUG: failed to upload image with error \(error.localizedDescription)")
+                return
+            }
+            
+            ref.downloadURL { (url, error) in
+                guard let profileImageUrl = url?.absoluteString else { return }
+                
+                // creating a user
+                // when creating method is called, it goes to server and returns any result and error(?)
+                Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+                    if let error = error {
+                        print("DEBUG: failed to upload image with error \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    // getting UID (user if) from server response
+                    guard let uid = result?.user.uid else { return }
+                    
+                    let data = ["email" : email,
+                                "fullname" : fullname,
+                                "username" : username,
+                                "uid" : uid,
+                                "imageProfileURL" : profileImageUrl] as [String : Any]
+                }
+            }
+        }
+    }
+    
     
     // MARK: - Setup UI
     
@@ -150,8 +201,8 @@ class RegistrationController: UIViewController {
         // alreadyHaveAccountButton
         self.view.addSubview(alreadyHaveAccountButton)
         alreadyHaveAccountButton.anchor(left: view.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor,
-                                     right: view.rightAnchor, paddingLeft: 32, paddingBottom: 16,
-                                     paddingRight: 32)
+                                        right: view.rightAnchor, paddingLeft: 32, paddingBottom: 16,
+                                        paddingRight: 32)
     }
     
     func configureGradientBackground() {
@@ -167,6 +218,7 @@ class RegistrationController: UIViewController {
 extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let selectedImage = info[.originalImage] as? UIImage
+        self.profileImage = selectedImage
         
         //selected image is set to avatar
         addPhotoButton.setImage(selectedImage?.withRenderingMode(.alwaysOriginal), for: .normal)

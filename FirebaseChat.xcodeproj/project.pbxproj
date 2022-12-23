@@ -66,7 +66,6 @@
 				DF3C40CC34BAF92BB398DE9D /* Pods-FirebaseChat.debug.xcconfig */,
 				37A50B12E6B103D4FAA9A928 /* Pods-FirebaseChat.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -146,8 +145,8 @@
 			isa = PBXGroup;
 			children = (
 				9FBF976F294A618F00628AEF /* App */,
-				9FBF975E294A617300628AEF /* ConversationsController.swift */,
 				9FB1CAD52954B4AC007B24B6 /* Protocols.swift */,
+				9FBF975E294A617300628AEF /* ConversationsController.swift */,
 				9F52BDB3294D75D900F77D56 /* AuthentificaionModule */,
 				9F9BF254294D7574003E64A2 /* Extensions */,
 				9FBF976E294A617D00628AEF /* Resources */,
