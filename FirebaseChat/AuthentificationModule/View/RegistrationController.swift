@@ -21,6 +21,8 @@ class RegistrationController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "addPhoto"), for: .normal)
         button.tintColor = .white
+        button.imageView?.contentMode = .scaleAspectFill
+        button.clipsToBounds = true
         return button
     }()
     
@@ -99,7 +101,7 @@ class RegistrationController: UIViewController {
     // MARK: - Methods
     
     func checkTextFieldsStatus() {
-        // if both textfields are filled, logIn button becomes enabledЦ
+        // if all textfields are filled, logIn button becomes enabledЦ
         if viewModel.formIsValid {
             signUpButton.isEnabled = true
             signUpButton.backgroundColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
@@ -126,7 +128,10 @@ class RegistrationController: UIViewController {
         checkTextFieldsStatus()
     }
     
+    // MARK: - creating a user in firebase
+    // creating a User in Firebase
     @objc func handleSignUp() {
+        
         // checking if every user's parameter exists
         guard let email = emailTextField.text, let password = passwordTextField.text,
               let username = usernameTextField.text?.lowercased(), let fullname = fullnameTextField.text else { return }
@@ -155,23 +160,34 @@ class RegistrationController: UIViewController {
                 // when creating method is called, it goes to server and returns any result and error(?)
                 Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
                     if let error = error {
-                        print("DEBUG: failed to upload image with error \(error.localizedDescription)")
+                        print("DEBUG: failed to create user with error \(error.localizedDescription)")
                         return
                     }
                     
-                    // getting UID (user if) from server response
+                    // getting UID (user id) from server response
                     guard let uid = result?.user.uid else { return }
-                    
                     let data = ["email" : email,
                                 "fullname" : fullname,
                                 "username" : username,
                                 "uid" : uid,
-                                "imageProfileURL" : profileImageUrl] as [String : Any]
+                                "profileImageUrl" : profileImageUrl] as [String : Any]
+                    
+                    
+                    // creates a collection (like folder) called "users" which will store UIDs.
+                    // every UID will have its own data - so email, fullname, username, profileImage
+                    Firestore.firestore().collection("users").document(uid).setData(data) { error in
+                        if let error = error {
+                            print("DEBUG: failed to create a user with error: \(error.localizedDescription)")
+                            return
+                        }
+                        
+                        print("DEBUG: User has been created")
+                        
+                    }
                 }
             }
         }
     }
-    
     
     // MARK: - Setup UI
     
