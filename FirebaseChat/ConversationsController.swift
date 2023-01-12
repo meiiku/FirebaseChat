@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ConversationsController: UIViewController {
 
@@ -24,14 +25,48 @@ class ConversationsController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        authentificateUser()
     }
+    
     // MARK: - Selectors
     
     @objc func showProfile() {
-        print("Profile opens")
+        print("DEBUG: Profile button tapped")
+        logoutUser()
+    }
+    
+    // MARK: - API
+    
+    func authentificateUser() {
+        
+        // once if user was created and it is in the database, it will be logged in by default
+        // so should check this before any actions
+        if Auth.auth().currentUser?.uid == nil {
+            print("DEBUG: user is NOT logged in")
+            presentLoginScreen()
+        } else {
+            print("DEBUG: user is logged in. Currend UID is \(Auth.auth().currentUser?.uid)")
+        }
+    }
+    
+    func logoutUser() {
+        do {
+            try Auth.auth().signOut()
+        } catch {
+            print("DEBUG: Error signing out")
+        }
     }
     
     // MARK: - Setup UI
+    
+    func presentLoginScreen() {
+        DispatchQueue.main.async {
+            let controller = LoginController()
+            let nav = UINavigationController(rootViewController: controller)
+            nav.modalPresentationStyle = .fullScreen
+            self.present(nav, animated: true)
+        }
+    }
     
     func configureUI() {
         configureNavigationBar()
@@ -75,7 +110,7 @@ class ConversationsController: UIViewController {
 // MARK: - Table settings
 extension ConversationsController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,7 +121,6 @@ extension ConversationsController: UITableViewDataSource {
         return cell
     }
 }
-
 
 extension ConversationsController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

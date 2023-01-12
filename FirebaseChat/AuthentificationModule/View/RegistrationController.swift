@@ -128,7 +128,7 @@ class RegistrationController: UIViewController {
         checkTextFieldsStatus()
     }
     
-    // MARK: - creating a user in firebase
+
     // creating a User in Firebase
     @objc func handleSignUp() {
         
@@ -247,3 +247,32 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
         print("image selected")
     }
 }
+
+/*
+list of users
+ 
+ User 1
+ email: althea.Witti@yahoo.com
+ full mame: Mary Davis
+ username: MDavis
+ password: password1
+
+ User 2
+ email: gloria1998@yahoo.com
+ full mame: Vickie Rowell
+ username: VRowell
+ password: password2
+
+ User 3
+ email: mason20@hotmail.com
+ full mame: Eric Brown
+ username: EBrown
+ password: password3
+
+ User 4
+ email: demon.dev@hotmail.com
+ full mame: Randy Lusher
+ username: RLusher
+ password: password4
+
+ */
